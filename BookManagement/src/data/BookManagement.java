@@ -30,6 +30,7 @@ public class BookManagement {
         int numBooks = sc.nextInt();
         for (int i = 0; i < numBooks; i++) {
             book = new Book();
+            System.out.println("Book No "+(i+1));
             book.input(sc);
             addBook(book);
         }
@@ -51,10 +52,9 @@ public class BookManagement {
                 book.output();
                 flag = false;
             }
-            if(flag){
-                System.out.println("We dont have that book name: "+inBook);
-            }
-
+        }
+        if(flag){
+            System.out.println("We dont have that book name: "+inBook);
         }
     }
     public void findBookByType(Scanner sc){
