@@ -91,7 +91,7 @@ public class Book {
         publishingYear = sc.nextInt();
     }
     public void output(){
-        System.out.printf("|%-10s|%-10d|%-10s|%-10s|%-10s|%-10s|%-10d|\n"
+        System.out.printf("|%-10s|%-10d|%-10s|%-20s|%-10s|%-20s|%-20d|\n"
                             ,"BOOK",id,name,author,type,publishingCompany,publishingYear);
     }
 }
