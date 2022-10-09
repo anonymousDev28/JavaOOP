@@ -15,26 +15,22 @@ public class mainSolution {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         FilmManagement filmMana = new FilmManagement();
-        // sample data 
-        Film e1 = new Movie("1", "Peaky Blinders", "action", "Eran", 2, 180);
-        Film e2 = new Movie("2", "Batman vs Superman", "action", "Trox", 180, 90);
-        Film e3 = new Movie("4", "The Walking Dead", "comedy", "Dave", 8, 180);
-        Film e4 = new Movie("5", "Rocky", "nah", "Chappell", 400, 100);
-        Film e5 = new Movie("3", "Squid Game", "comedy", "Andy", 92, 60);
-        Film s1 = new Seri("6", "The Witcher", "action", "Quang", 1, 6, 90);
-        filmMana.addFilm(e1);
-        filmMana.addFilm(e2);
-        filmMana.addFilm(e3);
-        filmMana.addFilm(e4);
-        filmMana.addFilm(e5);  
-        filmMana.addFilm(s1);
+        // sample data
+        filmMana.addFilm(new Movie("1", "Peaky Blinders", "action", "Eran", 2, 180));
+        filmMana.addFilm(new Movie("2", "Batman vs Superman", "action", "Trox", 180, 90));
+        filmMana.addFilm(new Movie("3", "Squid Game", "comedy", "Andy", 92, 60));
+        filmMana.addFilm(new Movie("4", "The Walking Dead", "comedy", "Dave", 8, 180));
+        filmMana.addFilm(new Movie("5", "Rocky", "nah", "Chappell", 400, 100));
+        filmMana.addFilm(new Seri("6", "The Witcher", "action", "Quang", 1, 6, 90));
+        filmMana.addFilm(new Seri("7", "The Bigbang Theory", "comedy", "hehe", 18, 5, 60));
         menuExecute(sc,filmMana);
     }
     public static void menuChoice(){
+        System.out.println();
         System.out.println("==========FILM MANAGEMENT==========");
         System.out.println("""
                            1.Add film
-                           2.Film information 
+                           2.Film information
                            3.Search film by title
                            4.Film has the lowest ranking
                            5.The author has the lowest ranking comedy film
@@ -42,14 +38,21 @@ public class mainSolution {
                            """);
     }
     public static int menuSelection(Scanner sc){
+        menuChoice();
         System.out.println("Your Choice ?");
         int choice = sc.nextInt();
+        while(choice > 5 || choice < 0){
+            System.out.println("""
+                                That function isn't support yet !
+                                choose again please!
+                                """);
+            choice = sc.nextInt();
+        }
         sc.nextLine();
         return choice;
     }
     public static void menuExecute(Scanner sc,FilmManagement filmMana){
             int choice;
-            menuChoice();
         do{
             choice = menuSelection(sc);
             switch(choice){

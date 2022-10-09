@@ -30,8 +30,12 @@ public class FilmManagement {
                                what type film you wanna add ?
                                1.Movie
                                2.Series""");
-            System.out.println("enter your choice ?");
+            System.out.println("enter that type ");
                 int choose = sc.nextInt();
+                while(choose >2 || choose <1){
+                    System.out.println("wrong input ! please enter again");
+                    choose = sc.nextInt();
+                }
                 sc.nextLine();
                 System.out.println("Film no "+(i+1));
                 switch (choose) {
@@ -53,6 +57,7 @@ public class FilmManagement {
     }
 
     public void displayFilm(){
+        System.out.println("All film we have: ");
             System.out.printf("|%-10s|%-10s|%-20s|%-10s|%-10s|%-10s|%-10s|%-10s|\n"
                                 ,"FILM","ID","TITLE","TYPE","AUTHOR","RANKING","DUARATION","EPISODES");
             for (Film filmEle : films) {
@@ -62,12 +67,17 @@ public class FilmManagement {
     public void searchByTitle(Scanner sc){
         System.out.println("Enter title of film you wanna find ? ");
         String inTitle = sc.nextLine();
-        System.out.println("list film has same title you find:");
+        System.out.println("result for keyword: "+inTitle);
+        boolean flag = true;
         for (Film filmEle : films) {
                 if(inTitle.equals(filmEle.getTitle())){
                     filmEle.output();
+                    flag = false;
                 }
             }
+        if(flag){
+            System.out.println("We dont have that film you want !");
+        }
     }
     public void thefilmHasLowestRanking(){
         System.out.println("The lowest ranking film is:");
@@ -82,17 +92,16 @@ public class FilmManagement {
     public void authorHasTheWorstComedyFilm(){
         ArrayList<Film> comedyFilms = new ArrayList<>();
         for (Film film : films) {
-            if("comedy".equals(film.getType())){
+            if("COMEDY".equals(film.getType())){
                 comedyFilms.add(film);
             }
         }
-//        System.out.println("List COMEDY film:");
         Film lowestComedyFilm = comedyFilms.get(0);
         for (int i = 0; i < comedyFilms.size(); i++) {
             if(comedyFilms.get(i).getRanking()>lowestComedyFilm.getRanking()){
                 lowestComedyFilm = comedyFilms.get(i);
             }
         }
-        System.out.println("Author has the lowest ranking comedy film is:"+lowestComedyFilm.getAuthor());
+        System.out.println("Author has the lowest ranking comedy film is:\n"+lowestComedyFilm.getAuthor()+" with "+lowestComedyFilm.getTitle());
     }
 }

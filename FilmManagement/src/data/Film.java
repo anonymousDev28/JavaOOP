@@ -27,7 +27,7 @@ public class Film {
     public Film(String id, String title, String type, String author, double ranking) {
         this.id = id;
         this.title = title;
-        this.type = type;
+        this.type = type.toUpperCase();
         this.author = author;
         this.ranking = ranking;
     }
